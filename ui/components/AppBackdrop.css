@@ -1,0 +1,48 @@
+/* A scoped background inside the gallery or login shell. Never under the sidebar. */
+#root {
+  position: relative;
+  isolation: isolate;
+}
+.app-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: transparent;
+}
+.app-backdrop .dot-grid {
+  height: 100%;
+  width: 100%;
+}
+.app-backdrop .dot-grid[data-renderer='static'] {
+  background-image: radial-gradient(circle, #1e1c24 2px, transparent 2px);
+  background-size: 14px 14px;
+  background-position: center;
+  mask-image: linear-gradient(transparent, #000 8%, #000 92%, transparent);
+}
+.app-backdrop .dot-grid[data-renderer='static'] canvas {
+  visibility: hidden;
+}
+body {
+  background: #171717;
+}
+.app,
+.sidebar {
+  background: #191919;
+}
+.workspace,
+.setup-shell,
+.boot {
+  position: relative;
+  isolation: isolate;
+}
+.workspace {
+  background: #242424;
+}
+.setup-shell,
+.boot {
+  background: #171717;
+}
+.setup-intro h1 {
+  text-shadow: 0 2px 18px #171717;
+}

@@ -1,0 +1,58 @@
+/* A stable native button owns focus and clicks; only its content has magnetic pull. */
+.magnet-content {
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  pointer-events: none;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+.magnet-content__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+}
+.icon-button .magnet-content__inner {
+  gap: 0;
+}
+.preview-arrow .magnet-content {
+  display: flex !important;
+}
+.toolbar .primary:has(.magnet-content) {
+  background: #3b3b3b;
+  color: #eeeeee;
+}
+.toolbar .primary:has(.magnet-content):hover:not(:disabled) {
+  background: #484848;
+  color: #ffffff;
+}
+.details > footer .primary:has(.magnet-content) {
+  background: #414141;
+  color: #eeeeee;
+}
+.details > footer .primary:has(.magnet-content):hover:not(:disabled) {
+  background: #505050;
+  color: #ffffff;
+}
+.empty-actions button:has(.magnet-content) {
+  background: #343434;
+  border-color: transparent;
+  color: #e6e6e6;
+}
+.empty-actions button.primary:has(.magnet-content) {
+  background: #414141;
+  color: #f0f0f0;
+}
+.empty-actions button:has(.magnet-content):hover {
+  background: #4b4b4b;
+}
+@media (prefers-reduced-motion: reduce) {
+  .magnet-content__inner {
+    transform: none !important;
+    will-change: auto !important;
+  }
+}

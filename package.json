@@ -1,0 +1,66 @@
+{
+  "name": "personal-asset-library",
+  "version": "1.2.0",
+  "description": "个人本地素材库",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "build:ui": "esbuild ui/app.jsx --bundle --outfile=ui/bundle.js --loader:.js=jsx --minify",
+    "start": "electron .",
+    "test": "node --test tests/*.test.cjs",
+    "package": "electron-builder --win dir",
+    "snapshot": "node scripts/snapshot.cjs",
+    "format": "prettier --write \"{desktop,server,ui,scripts,tests}/**/*.{cjs,jsx,css,html}\" package.json .prettierrc.json",
+    "format:check": "prettier --check \"{desktop,server,ui,scripts,tests}/**/*.{cjs,jsx,css,html}\" package.json .prettierrc.json",
+    "test:desktop": "node tests/personal-desktop.cjs",
+    "test:personal": "node tests/personal-desktop.cjs",
+    "test:input": "node tests/input-desktop.cjs",
+    "test:loading": "node tests/thumbnail-loading.cjs",
+    "test:trash": "node tests/trash-selection.cjs",
+    "test:selection": "node tests/quick-selection.cjs",
+    "test:folder-import": "node tests/folder-import.cjs",
+    "test:folder-drag": "node tests/folder-drag.cjs"
+  },
+  "dependencies": {
+    "express": "5.3.0",
+    "lucide-react": "0.468.0",
+    "multer": "2.4.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.25.12",
+    "playwright-core": "1.62.1",
+    "prettier": "3.6.2"
+  },
+  "build": {
+    "electronDist": "node_modules/electron/dist",
+    "appId": "local.personal.assetlibrary",
+    "productName": "素材库",
+    "asar": true,
+    "npmRebuild": false,
+    "directories": {
+      "output": "release/1.2.0"
+    },
+    "files": [
+      "desktop/**/*",
+      "server/**/*",
+      "ui/**/*",
+      "vendor/**/*",
+      "licenses/**/*",
+      "package.json",
+      "README.md",
+      "OPEN_SOURCE.md"
+    ],
+    "win": {
+      "target": "dir",
+      "signAndEditExecutable": true,
+      "icon": "ui/assets/logo.ico",
+      "signExecutable": false
+    }
+  }
+}
